@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - MediCalc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <h2 class="auth-title">สมัครสมาชิก MediCalc</h2>
+
+        <form id="register-form">
+            <div class="input-group">
+                <i class="fas fa-user input-icon left"></i>
+                <input type="text" id="username" class="auth-input" placeholder="ชื่อผู้ใช้ (สำหรับ Login)" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock input-icon left"></i>
+                <input type="password" id="password" class="auth-input" placeholder="รหัสผ่าน (อย่างน้อย 6 ตัว)" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-id-card input-icon left"></i>
+                <input type="text" id="fullname" class="auth-input" placeholder="ชื่อ-นามสกุล (ที่แสดงผล)" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user-tag input-icon left"></i>
+                <input type="text" id="position" class="auth-input" placeholder="ตำแหน่ง (เช่น เภสัชกร, เจ้าหน้าที่แผนก)">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-phone input-icon left"></i>
+                <input type="tel" id="phone" class="auth-input" placeholder="หมายเลขโทรศัพท์">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-hospital input-icon left"></i>
+                <select id="department" class="auth-input" required>
+                    <option value="">-- เลือกแผนก --</option>
+                </select>
+            </div>
+            
+            <p id="message" class="form-message" style="color: #ff6b6b;"></p>
+
+            <button type="submit" class="auth-button">สมัครสมาชิก</button>
+        </form>
+        
+        <p class="auth-link">
+            มีบัญชีอยู่แล้ว? <a href="login.html">เข้าสู่ระบบที่นี่</a>
+        </p>
+    </div>
+
+    <script src="JS/register.js" type="module"></script>
+</body>
+</html>

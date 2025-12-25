@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <h2 class="auth-title">เข้าสู่ระบบ</h2>
+
+        <form id="login-form">
+            <div class="input-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="username" class="auth-input" placeholder="ชื่อผู้ใช้" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="password" class="auth-input" placeholder="รหัสผ่าน" required>
+            </div>
+
+            <p id="message" class="form-message" style="color: #ff6b6b;"></p>
+
+            <button type="submit" class="auth-button">เข้าสู่ระบบ</button>
+        </form>
+        
+        <p class="auth-link">
+            ยังไม่มีบัญชี? <a href="register.html">สมัครสมาชิกที่นี่</a>
+        </p>
+    </div>
+
+    <script src="JS/login.js"></script>
+</body>
+</html>
