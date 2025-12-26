@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return null;
                 }
             }
-            let API_BASE = normalizeBase(configured) || (window.location.protocol + '//' + window.location.hostname + ':' + defaultPort);
+            // Prefer configured API_BASE; otherwise default to the public DDNS host+port
+            let API_BASE = normalizeBase(configured) || ('http://project.3bbddns.com:' + defaultPort);
             console.log('Using API_BASE =', API_BASE);
             const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: 'POST',
