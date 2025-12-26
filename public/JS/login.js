@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            // Resolve API base robustly: prefer generated config but avoid legacy 127.0.0.1:4200 hardcodes
+            // Resolve API base robustly: prefer generated config but avoid legacy 127.0.0.1:36142 hardcodes
             const configured = window.APP_CONFIG && window.APP_CONFIG.API_BASE ? window.APP_CONFIG.API_BASE : null;
             const defaultPort = '36142';
             function normalizeBase(base) {
                 try {
                     const url = new URL(base);
                     // No special-casing for 127.0.0.1 — rely on configured API_BASE or explicit host
-                    // Prevent legacy port 4200
-                    if (url.port === '4200') url.port = defaultPort;
+                    // Prevent legacy port 36142
+                    if (url.port === '36142') url.port = defaultPort;
                     return url.origin;
                 } catch (e) {
                     return null;
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Login error:', err);
             // If the attempt used a legacy host, try fallback using current host + default port
             const usedApi = typeof API_BASE !== 'undefined' ? API_BASE : null;
-            if (usedApi && usedApi.includes(':4200')) {
+            if (usedApi && usedApi.includes(':36142')) {
                 const alt = 'http://project.3bbddns.com:36142';
                 messageEl.textContent = 'ไม่สามารถเชื่อมต่อกับค่า API เดิม กำลังลองใช้ endpoint สำรอง...';
                 messageEl.style.color = 'orange';
