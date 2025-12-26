@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const editId = urlParams.get('editId');
 
-    const API_BASE = 'http://127.0.0.1:4200';
+    const API_BASE = 'http://127.0.0.1:36142';
     const initEditMode = async (formulaId) => {
         document.querySelector('h2').innerHTML = '<i class="fas fa-pencil-alt mr-2"></i> แก้ไขสูตรยา';
         document.title = 'แก้ไขสูตรยา';

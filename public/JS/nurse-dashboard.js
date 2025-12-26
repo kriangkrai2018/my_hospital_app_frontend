@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileModal = document.getElementById('profile-modal'); 
 
     // --- API Helper ---
-    const API_BASE = 'http://127.0.0.1:4200';
+    const API_BASE = 'http://127.0.0.1:36142';
     const apiRequest = async (endpoint, method = 'GET', body = null) => {
         const token = localStorage.getItem('token');
         if (!token) { window.location.href = '/login.html'; return null; }
