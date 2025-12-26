@@ -14,10 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function normalizeBase(base) {
                 try {
                     const url = new URL(base);
-                    // Replace 127.0.0.1 with current host if found
-                    if (url.hostname === '127.0.0.1' || url.hostname === '127.0.1.1') {
-                        url.hostname = window.location.hostname;
-                    }
+                    // No special-casing for 127.0.0.1 — rely on configured API_BASE or explicit host
                     // Prevent legacy port 4200
                     if (url.port === '4200') url.port = defaultPort;
                     return url.origin;
@@ -71,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Login error:', err);
             // If the attempt used a legacy host, try fallback using current host + default port
             const usedApi = typeof API_BASE !== 'undefined' ? API_BASE : null;
-            if (usedApi && (usedApi.includes('127.0.0.1') || usedApi.includes(':4200'))) {
-                const alt = window.location.protocol + '//' + window.location.hostname + ':' + '36142';
+            if (usedApi && usedApi.includes(':4200')) {
+                const alt = 'http://project.3bbddns.com:36142';
                 messageEl.textContent = 'ไม่สามารถเชื่อมต่อกับค่า API เดิม กำลังลองใช้ endpoint สำรอง...';
                 messageEl.style.color = 'orange';
                 try {
