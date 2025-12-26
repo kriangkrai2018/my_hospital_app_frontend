@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "npx http-server ./public -p 36141 -o"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2"
   }

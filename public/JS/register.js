@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const regDeptSelect = document.getElementById('department');
     const messageElement = document.getElementById('message');
 
+    const API_BASE = 'http://127.0.0.1:4200';
     // Fetch and populate department dropdown on page load
     async function fetchDepartments() {
         try {
-            const response = await fetch('/api/auth/departments');
+            const response = await fetch(`${API_BASE}/api/auth/departments`);
             if (!response.ok) {
                 console.error('Failed to fetch departments:', response.status, response.statusText);
                 messageElement.textContent = 'ไม่สามารถดึงรายชื่อแผนกได้ กรุณาลองใหม่อีกครั้ง';
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. ส่งข้อมูลไปที่ API
         try {
-            const response = await fetch('/api/auth/register', {
+            const response = await fetch(`${API_BASE}/api/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 // 4. เพิ่มฟิลด์ใหม่ใน body

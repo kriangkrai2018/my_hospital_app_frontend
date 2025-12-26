@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rateResultDisplayArea = document.getElementById('rate-result-display-area');
 
     // --- API Helper ---
+    const API_BASE = 'http://127.0.0.1:4200';
     const apiRequest = async (endpoint, method = 'GET', body = null) => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const config = { method, headers };
         if (body) config.body = JSON.stringify(body);
         try {
-            const response = await fetch(endpoint, config);
+            const response = await fetch(`${API_BASE}${endpoint}`, config);
             if (response.status === 401 || response.status === 403) {
                 localStorage.clear();
                 alert('Session หมดอายุ กรุณาล็อกอินใหม่');

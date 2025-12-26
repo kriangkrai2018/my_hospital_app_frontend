@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const editId = urlParams.get('editId');
 
+    const API_BASE = 'http://127.0.0.1:4200';
     const initEditMode = async (formulaId) => {
         document.querySelector('h2').innerHTML = '<i class="fas fa-pencil-alt mr-2"></i> แก้ไขสูตรยา';
         document.title = 'แก้ไขสูตรยา';
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         DOMElements.addFormulaForm.appendChild(hiddenInput);
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch(`/api/admin/formulas/builder-data/${formulaId}`, { headers: { 'Authorization': `Bearer ${token}` }});
+            const res = await fetch(`${API_BASE}/api/admin/formulas/builder-data/${formulaId}`, { headers: { 'Authorization': `Bearer ${token}` }});
             if (!res.ok) throw new Error('ไม่สามารถโหลดข้อมูลสูตรยาได้');
             const data = await res.json();
             DOMElements.formulaName.value = data.name;
@@ -240,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const method = isEditMode ? 'PUT' : 'POST';
 
         try {
-            const res = await fetch(endpoint, {
+            const res = await fetch(`${API_BASE}${endpoint}`, {
                 method: method,
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(formulaData)

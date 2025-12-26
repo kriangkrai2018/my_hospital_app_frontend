@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareFormulaBtn = document.getElementById('share-formula-btn');
 
     // --- API Helper ---
+    const API_BASE = 'http://127.0.0.1:4200';
     const apiRequest = async (endpoint, method = 'GET', body = null) => {
         const token = localStorage.getItem('token');
         if (!token) { window.location.href = '/login.html'; return null; }
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const config = { method, headers };
         if (body) config.body = JSON.stringify(body);
         try {
-            const response = await fetch(endpoint, config);
+            const response = await fetch(`${API_BASE}${endpoint}`, config);
             if (response.status === 401 || response.status === 403) { localStorage.clear(); alert('Session หมดอายุ กรุณาล็อกอินใหม่'); window.location.href = '/login.html'; return null; }
             if (response.status === 404) { console.log(`Resource not found at ${endpoint}`); return null; }
             if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.message || 'API request failed'); }

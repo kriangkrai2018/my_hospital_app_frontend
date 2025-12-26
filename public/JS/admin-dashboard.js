@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Helper: Centralized API Request
+    const API_BASE = 'http://127.0.0.1:4200';
     const apiRequest = async (endpoint, method = 'GET', body = null) => {
         const token = localStorage.getItem('token');
         if (!token) { window.location.href = 'login.html'; return null; }
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (body) config.body = JSON.stringify(body);
 
         try {
-            const response = await fetch(`/api/admin${endpoint}`, config);
+            const response = await fetch(`${API_BASE}/api/admin${endpoint}`, config);
             if (response.status === 401 || response.status === 403) {
                 localStorage.clear();
                 window.location.href = 'login.html';

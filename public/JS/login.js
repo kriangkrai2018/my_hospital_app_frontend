@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            const res = await fetch('/api/auth/login', {
+            const API_BASE = 'http://127.0.0.1:4200';
+            const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
