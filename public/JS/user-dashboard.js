@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rateResultDisplayArea = document.getElementById('rate-result-display-area');
 
     // --- API Helper ---
-    const API_BASE = (window.APP_CONFIG && window.APP_CONFIG.API_BASE) || 'http://localhost:36142';
+    const API_BASE = (window.APP_CONFIG && window.APP_CONFIG.API_BASE) || window.location.origin;
     const apiRequest = async (endpoint, method = 'GET', body = null) => {
         const token = localStorage.getItem('token');
         if (!token) {

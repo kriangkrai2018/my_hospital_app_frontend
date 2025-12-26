@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return null;
                 }
             }
-            // Prefer configured API_BASE; otherwise default to the public DDNS host+port
-            let API_BASE = normalizeBase(configured) || ('http://project.3bbddns.com:' + defaultPort);
+            // Prefer configured API_BASE; otherwise use current page origin
+            let API_BASE = normalizeBase(configured) || window.location.origin;
             console.log('Using API_BASE =', API_BASE);
             const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: 'POST',
@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (err) {
             console.error('Login error:', err);
-            // If the attempt used a legacy host, try fallback using current host + default port
+            // If the attempt used a different origin, try fallback using the page origin
             const usedApi = typeof API_BASE !== 'undefined' ? API_BASE : null;
-            if (usedApi && usedApi.includes(':36142')) {
-                const alt = 'http://project.3bbddns.com:36142';
+            if (usedApi && usedApi !== window.location.origin) {
+                const alt = window.location.origin;
                 messageEl.textContent = 'ไม่สามารถเชื่อมต่อกับค่า API เดิม กำลังลองใช้ endpoint สำรอง...';
                 messageEl.style.color = 'orange';
                 try {
