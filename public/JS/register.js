@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const regDeptSelect = document.getElementById('department');
     const messageElement = document.getElementById('message');
 
-    const API_BASE = (window.APP_CONFIG && window.APP_CONFIG.API_BASE) || 'http://127.0.0.1:36142';
+    const API_BASE = (window.APP_CONFIG && window.APP_CONFIG.API_BASE) || 'http://localhost:36142';
     // Fetch and populate department dropdown on page load
     async function fetchDepartments() {
         try {
